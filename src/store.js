@@ -50,18 +50,17 @@ export default new Vuex.Store({
     loadTodos({ commit }) {
       commit("SET_LOADING", true);
       commit("SET_ALERT", false);
-      commit("SET_SUBMITTED", true);
 
       axios
         .get("https://shady-todo-list-backend.herokuapp.com/api/todos")
         .then(todos => {
           commit("SET_TODOS", todos.data.todo);
           commit("SET_LOADING", false);
-          commit("SET_SUBMITTED", false);
         });
     },
     addTodo({ commit }, todo) {
       commit("SET_LOADING", true);
+      commit("SET_SUBMITTED", true);
 
       axios
         .post("https://shady-todo-list-backend.herokuapp.com/api/todos", {
@@ -71,6 +70,7 @@ export default new Vuex.Store({
           commit("ADD_TODO", todo);
           commit("SET_LOADING", false);
           commit("SET_ALERT", true);
+          commit("SET_SUBMITTED", false);
         });
     },
     deleteTodo({ commit }, id, index) {
