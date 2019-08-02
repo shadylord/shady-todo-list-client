@@ -70,8 +70,9 @@ export default new Vuex.Store({
           commit("ADD_TODO", todo);
           commit("SET_LOADING", false);
           commit("SET_ALERT", true);
-          commit("SET_SUBMITTED", false);
         });
+
+      commit("SET_SUBMITTED", false);
     },
     deleteTodo({ commit }, id, index) {
       commit("SET_LOADING", true);
